@@ -19,4 +19,4 @@ Development Workflow
 - Pull Requests
 - CodeRabbit AI Reviews
 - GitHub Copilot
-- Claude Code
+- Cline CLI
