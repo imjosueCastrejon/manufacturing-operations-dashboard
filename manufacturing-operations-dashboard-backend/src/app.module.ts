@@ -5,6 +5,8 @@ import { WorkOrdersModule } from './work-orders/work-orders.module';
 import { QualityIssuesModule } from './quality-issues/quality-issues.module';
 import { ProductionMetricsModule } from './production-metrics/production-metrics.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { WorkOrder } from './work-orders/entities/work-order.entity';
+import { ProductionMetric } from './production-metrics/entities/production-metric.entity';
 
 @Module({
   imports: [
@@ -18,6 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'postgres',
       password: '',
       database: 'manufacturing_db',
+      entities: [WorkOrder, ProductionMetric],
       autoLoadEntities: true,
       synchronize: true,
     }),
