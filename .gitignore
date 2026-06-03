@@ -1,65 +1,90 @@
-# Node
+# ======================================
+# Dependencies
+# ======================================
 node_modules/
 
-# Logs
-logs
-*.log
-
-# Environment
+# ======================================
+# Environment Variables
+# ======================================
 .env
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
 
-# Angular
-#frontend/.angular/
-#frontend/dist/
+!.env.example
+
+# ======================================
+# Build Outputs
+# ======================================
 
 # NestJS
-backend/dist/
+manufacturing-operations-dashboard-backend/dist/
 
-# IDE
-.vscode/
-.idea/
+# Next.js
+manufacturing-operations-dashboard-frontend/.next/
 
-# OS
-.DS_Store
+# Otros builds
+dist/
+build/
+out/
 
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ======================================
+# Coverage
+# ======================================
+coverage/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# ======================================
+# TypeScript
+# ======================================
+*.tsbuildinfo
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+# ======================================
+# Logs
+# ======================================
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# ======================================
+# Cache
+# ======================================
+.cache/
+.turbo/
 
-# vercel
-.vercel
+# ======================================
+# IDE
+# ======================================
+.idea/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# ======================================
+# OS Files
+# ======================================
+.DS_Store
+Thumbs.db
+
+# ======================================
+# Testing
+# ======================================
+playwright-report/
+test-results/
+
+# ======================================
+# Temporary
+# ======================================
+tmp/
+temp/
+
+# ======================================
+# Databases Locales
+# ======================================
+*.sqlite
+*.sqlite3
+*.db
