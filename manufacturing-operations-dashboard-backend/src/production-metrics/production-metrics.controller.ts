@@ -1,34 +1,34 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { ProductionMetricsService } from './production-metrics.service';
-import { CreateProductionMetricDto } from './dto/create-production-metric.dto';
-import { UpdateProductionMetricDto } from './dto/update-production-metric.dto';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('production-metrics')
 @Controller('production-metrics')
 export class ProductionMetricsController {
-  constructor(private readonly productionMetricsService: ProductionMetricsService) {}
+  constructor(
+    private readonly productionMetricsService: ProductionMetricsService,
+  ) {}
 
-  @Post()
-  create(@Body() createProductionMetricDto: CreateProductionMetricDto) {
-    return this.productionMetricsService.create(createProductionMetricDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.productionMetricsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productionMetricsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductionMetricDto: UpdateProductionMetricDto) {
-    return this.productionMetricsService.update(+id, updateProductionMetricDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productionMetricsService.remove(+id);
+  @Get('dashboard')
+  @ApiOperation({
+    summary: 'Obtener métricas dinámicas para el dashboard industrial',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Métricas calculadas exitosamente',
+    schema: {
+      type: 'object',
+      properties: {
+        activeWorkOrders: { type: 'number' },
+        completedWorkOrders: { type: 'number' },
+        openQualityIssues: { type: 'number' },
+        productionEfficiency: { type: 'number' },
+        dailyProductionOutput: { type: 'number' },
+        qualityRate: { type: 'number' },
+      },
+    },
+  })
+  getDashboardMetrics() {
+    return this.productionMetricsService.getDashboardMetrics();
   }
 }
